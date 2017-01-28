@@ -1,0 +1,57 @@
+#backgroundPhoto {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#titleBanner {
+    position: relative;
+}
+
+#personalInfo {
+    position: relative;
+    width: 75%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#selfPicture {
+    width: 25%;
+    height: 25%;
+    float: left;
+}
+
+#selfPictureDiv {
+    overflow: auto;
+}
+
+#pictureBio {
+    margin: 5px;
+}
+
+#links {
+    background: whitesmoke;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+}
+
+.listNoBullets {
+}
+
+.redBorder {
+    position: relative;
+    border: 5px solid red;
+}
+
+.linkHeaders {
+    text-align: center;
+}
+
+p.singleSpace {
+    margin: 0;
+}
