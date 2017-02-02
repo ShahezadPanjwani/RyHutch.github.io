@@ -1,0 +1,71 @@
+.redBorder {
+    position: relative;
+    border: 5px solid red;
+}
+
+.backgroundColor {
+    background: #FFCC00;
+}
+
+/* Title Banner Styling*/
+
+.titleBanner{
+    position: relative;
+    text-align: center;
+    background: #F0F0F0;
+    color: #A4A400;
+}
+
+/* Navigation Nar Styling*/
+
+#navBarTable {
+    position: relative;
+    width: auto;
+}
+
+.navTr, .navTd, .navTh {
+    background: #A4A400;
+    border: #FFCC00 2px solid;
+    padding: 10px;
+}
+
+/* Text Styling */
+
+p {
+    position: relative;
+    font-size: larger;
+}
+
+li {
+    position: relative;
+    font-size: larger;
+}
+
+/* Table Styling */
+
+.tableBackground {
+    position: relative;
+    width: auto;
+    table-layout: fixed;
+    background: #F0F0F0;
+}
+
+.tableTopHeader {
+    text-align: center;
+    color: #A4A400;
+    background: #F0F0F0;
+}
+
+th {
+    position: relative;
+    width: auto;
+    background: #003366;
+    color: #FFFFFF;
+}
+
+td {
+    position: relative;
+    width: auto;
+    background: #CC9933;
+    color: #FFFFFF;
+}
