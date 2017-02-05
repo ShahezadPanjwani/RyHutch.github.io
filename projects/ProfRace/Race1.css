@@ -1,0 +1,239 @@
+﻿body {
+    background-color:lightblue;
+    background: -webkit-linear-gradient(left,rgba(182,235,239,0),rgba(182,235,239,1));
+    background: -o-linear-gradient(right,rgba(182,235,239,0),rgba(182,235,239,1));
+    background: -moz-linear-gradient(right,rgba(182,235,239,0),rgba(182,235,239,1));
+    background: linear-gradient(to right,rgba(182,235,239,0),rgba(182,235,239,1));
+}
+
+.raceLane {
+    align-self: center;
+    width: 99%;
+    height: 10%;
+}
+
+.laneBorder {
+    border: solid 5px #c0c0bc;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.pictureScale {
+    position: relative;
+    width: 6.5%;
+    height: auto;
+    vertical-align:middle;
+    border-radius: 50%;
+}
+
+.placeText {
+    position: relative;
+    opacity: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+h1 {
+    text-align:center;
+    font-family: 'Times New Roman';
+    font-size: 50px;
+}
+
+.prof {
+    font-weight:bold;
+    text-decoration:underline;
+    text-shadow: 2px 2px 5px red;
+}
+
+.win {
+    font-weight:bold;
+    color: steelblue;
+    text-shadow: 0 0 3px steelblue;
+}
+
+h2 {
+    text-align:center;
+    font-size:40px;
+}
+
+h3 {
+    font-size: 30px;
+    font-family: Georgia;
+}
+
+#winlose {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    border: double gray 5px;
+    background: darkgray;
+    opacity: 0;
+}
+
+/* The Button Animations */
+
+.button {
+    background-color: #9f9f9f; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.buttonHover:hover {
+    background-color: #555555;
+    color: white;
+}
+
+#buttonDiv {
+    position: relative;
+    top: 50px;
+}
+
+#buttonTable {
+    margin-left: auto; margin-right: auto;
+}
+
+.invisible {
+    position: relative;
+    top: 20px;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.invisibleHover:hover {
+    background-color: #555555;
+    color: white;
+}
+
+/* All of the animations for the races. */
+
+.winloseDelay {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 11s;
+    animation-delay: 11s;
+}
+
+.animation {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+#henry {
+    -webkit-animation-name: henryRace;
+    animation-name: henryRace;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+}
+
+#henryPlace {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 10s;
+    animation-delay: 10s;
+}
+
+#bhola {
+    -webkit-animation-name: bholaRace;
+    animation-name: bholaRace;
+    -webkit-animation-duration: 11s;
+    animation-duration: 11s;
+}
+
+#bholaPlace {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 11s;
+    animation-delay: 11s;
+}
+
+#king {
+    -webkit-animation-name: kingRace;
+    animation-name: kingRace;
+    -webkit-animation-duration: 10.5s;
+    animation-duration: 10.5s;
+}
+
+#kingPlace {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 10.5s;
+    animation-delay: 10.5s;
+}
+
+#rao {
+    -webkit-animation-name: raoRace;
+    animation-name: raoRace;
+    -webkit-animation-duration: 9s;
+    animation-duration: 9s;
+}
+
+#raoPlace {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 9s;
+    animation-delay: 9s;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes henryRace {
+    0% {left: 0%;}
+    25% {left: 60%;}
+    50% {left : 65%;}
+    100% {left: 93%;}
+}
+
+@keyframes bholaRace {
+    0% {left: 0%;}
+    25% {left: 40%;}
+    50% {left : 60%;}
+    100% {left: 93%;}
+}
+
+@keyframes kingRace {
+    0% {left: 0%;}
+    25% {left: 15%;}
+    50% {left : 40%;}
+    100% {left: 93%;}
+}
+
+@keyframes raoRace {
+    0% {left: 0%;}
+    25% {left: 40%;}
+    50% {left : 70%;}
+    100% {left: 93%;}
+}
