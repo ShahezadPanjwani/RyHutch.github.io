@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Style Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+<form action="styleform.php" method="post">
+    <table>
+        <tr>
+            <td>
+                <p>Select a Font:</p>
+                <input type="radio" name="Font" value="Arial" checked>Arial<br>
+                <input type="radio" name="Font" value="Times New Roman">Times New Romans<br>
+                <input type="radio" name="Font" value="Webdings">Webdings
+            </td>
+            <td>
+                <p>Modifier:</p>
+                <input type="radio" name="Modifier" value="Bold" checked>Bold<br>
+                <input type="radio" name="Modifier" value="Italic">Italic<br>
+            </td>
+            <td>
+                <p>Select a Color:</p>
+                <select name="Color">
+                    <option value="black" selected="selected">Black</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <p>Enter the text you wish to format:</p>
+    <textarea rows="10" cols="20" name="Text"></textarea>
+    <p><input type="submit" value="Click" name="submit"/></p>
+</form>
+</body>
+</html>
