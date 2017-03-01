@@ -3,7 +3,6 @@
 
 <?php
 session_start();
-$turn = 1;
 
 // A function to randomize the Dice array
 function rollDice($dice)
@@ -31,7 +30,6 @@ function countDice($dice)
 // A function to display current bid information
 function currentBid()
 {
-
     if (isset($_POST['Bid']) && isset($_POST['Face'])) {
         $b = $_POST['Bid'];
         $f = $_POST['Face'];
@@ -42,7 +40,7 @@ function currentBid()
 }
 
 // A function to display a menu based on the turn
-function turn(&$turn)
+function turn($turn)
 {
     // Display a user interface if it is the player's turn
     if ($turn == 1) {
@@ -79,14 +77,14 @@ function lastAction()
     } else if ($_POST['submit'] == "Next") {
 
     } else {
-        // This should never happen
+        // This only happen for the first turn of the game
     }
 }
 
 // A function to check that the dice are in the $_POST array (they may not be for the start of the game)
-function checkDice()
+function checkSession()
 {
-
+    // Check if the dice exist in the session
     if (isset($_SESSION['dice'])) {
         echo "<h1>DICE EXIST</h1>";
     } else {
@@ -97,13 +95,16 @@ function checkDice()
             array(0, 0, 0, 0, 0),
         );
     }
+
+    // Check for the last turn
+    if (isset($_SESSION['turn'])) {
+        $t = $_SESSION['turn'];
+        echo "<h1>Turn: $t</h1>";
+    } else {
+        echo "<h1>No Turn</h1>";
+        $_SESSION['turn'] = 1;
+    }
 }
-
-// A function to send all relevant data with the next $_POST
-function packData(){
-
-}
-
 ?>
 
 <head>
@@ -113,20 +114,20 @@ function packData(){
 <body>
 
 <?php
-
-checkDice();
+checkSession();
 currentBid();
 lastAction();
-packData();
 
 // Debug printing
+/////////////////////////////////////////////////////////
 foreach ($_SESSION['dice'] as $cup) {
     echo implode(" ", $cup);
     echo "<br>";
 }
 echo implode(" ", countDice($_SESSION['dice']));
+/////////////////////////////////////////////////////////
 
-turn($turn);
+turn($_SESSION['turn']);
 ?>
 
 </body>
