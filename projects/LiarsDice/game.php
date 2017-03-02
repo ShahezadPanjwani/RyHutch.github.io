@@ -30,10 +30,10 @@ function countDice($dice)
 // A function to display current bid information
 function currentBid()
 {
-    if (isset($_POST['Bid']) && isset($_POST['Face'])) {
-        $b = $_POST['Bid'];
-        $f = $_POST['Face'];
-        echo "<p>Current Bid: $b $f's</p>";
+    if (isset($_SESSION['number']) && isset($_SESSION['face'])) {
+        $n = $_SESSION['number'];
+        $f = $_SESSION['face'];
+        echo "<p>Current Bid: $n $f's</p>";
     } else {
         echo "<p>No Active Bid</p>";
     }
@@ -43,52 +43,70 @@ function currentBid()
 function turn($turn)
 {
     // Display a user interface if it is the player's turn
-    if ($turn == 1) {
+    if ($turn < 10) {
         echo "<br>";
         echo "<form action='game.php' method='post'>";
         echo "<p>Call Bluff:</p>";
         echo "<input type='submit' value='Call' name='submit'>";
         echo "<p>Number of dice:</p>";
-        echo "<input type='number' name='Bid'><br>";
+        echo "<input type='number' name='number'><br>";
         echo "<p>Value of Face:</p>";
-        echo "<input type='radio' name='Face' value='1'>1<br>";
-        echo "<input type='radio' name='Face' value='2'>2<br>";
-        echo "<input type='radio' name='Face' value='3'>3<br>";
-        echo "<input type='radio' name='Face' value='4'>4<br>";
-        echo "<input type='radio' name='Face' value='5'>5<br>";
-        echo "<input type='radio' name='Face' value='6'>6";
+        echo "<input type='radio' name='face' value='1'>1<br>";
+        echo "<input type='radio' name='face' value='2'>2<br>";
+        echo "<input type='radio' name='face' value='3'>3<br>";
+        echo "<input type='radio' name='face' value='4'>4<br>";
+        echo "<input type='radio' name='face' value='5'>5<br>";
+        echo "<input type='radio' name='face' value='6'>6";
         echo "<p>Make the Bid:</p>";
         echo "<input type='submit' value='Bet' name='submit'>";
+        echo "<p>Reset:</p>";
+        echo "<input type='submit' value='Reset' name='submit'>";
         echo "</form>";
     } else {
         echo "<form action='game.php' method='post'>";
         echo "<input type='submit' value='Next' name='submit'>";
         echo "</form>";
     }
+
+    // Increment the turn counter
+    if($_SESSION['turn'] < 2){
+        $_SESSION['turn']++;
+    } else {
+        $_SESSION['turn'] = 0;
+    }
+
 }
 
 // A function to handle whether the last action was a Call, Bet, or Next
 function lastAction()
 {
     if ($_POST['submit'] == "Call") {
+        callBluff();
         $_SESSION['dice'] = rollDice($_SESSION['dice']);
     } else if ($_POST['submit'] == "Bet") {
 
     } else if ($_POST['submit'] == "Next") {
 
+    } else if ($_POST['submit'] == "Reset") {
+        $_SESSION['dice'] = array(
+            array(0, 0, 0, 0, 0),
+            array(0, 0, 0, 0, 0),
+            array(0, 0, 0, 0, 0),
+        );
+        $_SESSION['dice'] = rollDice($_SESSION['dice']);
     } else {
         // This only happen for the first turn of the game
     }
 }
 
-// A function to check that the dice are in the $_POST array (they may not be for the start of the game)
-function checkSession()
+// A function to load all data from the $_SESSION array into the current turn
+function loadSession()
 {
     // Check if the dice exist in the session
     if (isset($_SESSION['dice'])) {
         echo "<h1>DICE EXIST</h1>";
     } else {
-        echo "<h1>DICE DONT EXIST</h1>";
+        echo "<h1>DICE DON'T EXIST</h1>";
         $_SESSION['dice'] = array(
             array(0, 0, 0, 0, 0),
             array(0, 0, 0, 0, 0),
@@ -104,6 +122,41 @@ function checkSession()
         echo "<h1>No Turn</h1>";
         $_SESSION['turn'] = 1;
     }
+
+    // Insert the last $_POST data into the $_SESSION
+    if (isset($_POST['number']) && isset($_POST['face'])) {
+        $_SESSION['number'] = $_POST['number'];
+        $_SESSION['face'] = $_POST['face'];
+    }
+}
+
+// A function to check if the Bid was over estimated
+function callBluff(){
+    $total = countDice($_SESSION['dice']);
+    $t = -1;
+
+    if ($total[$_SESSION['face']] < $_SESSION['number']){
+        if ($_SESSION['turn'] == 0) {
+            $t = 1;
+        } else if ($_SESSION['turn'] == 1){
+            $t = 2;
+        } else if ($_SESSION['turn'] == 2){
+            $t = 0;
+        }
+        array_pop($_SESSION['dice'][$t]);
+    } else {
+        if ($_SESSION['turn'] == 0) {
+            $t = 2;
+        } else if ($_SESSION['turn'] == 1){
+            $t = 0;
+        } else if ($_SESSION['turn'] == 2){
+            $t = 1;
+        }
+        array_pop($_SESSION['dice'][$t]);
+    }
+
+    unset($_SESSION['number']);
+    unset($_SESSION['face']);
 }
 ?>
 
@@ -114,16 +167,18 @@ function checkSession()
 <body>
 
 <?php
-checkSession();
-currentBid();
+loadSession();
 lastAction();
+currentBid();
 
 // Debug printing
 /////////////////////////////////////////////////////////
-foreach ($_SESSION['dice'] as $cup) {
-    echo implode(" ", $cup);
+for ($i = 0; $i < sizeof($_SESSION['dice']); $i++){
+    echo "$i: ";
+    echo implode(" ", $_SESSION['dice'][$i]);
     echo "<br>";
 }
+
 echo implode(" ", countDice($_SESSION['dice']));
 /////////////////////////////////////////////////////////
 
