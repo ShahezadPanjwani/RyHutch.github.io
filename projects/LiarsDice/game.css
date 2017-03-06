@@ -1,0 +1,39 @@
+body {
+    background-color: white;
+    font-family: Georgia, serif;
+    color: #01295F;
+}
+
+img {
+    height: 75px;
+    width: 75px;
+    padding: 5px;
+}
+
+#diceDisplay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #849324;
+    border-radius: 25px;
+    border: 5px solid #FD151B;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font-family: Georgia, serif;
+}
+
+#menu {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    background-color: #437F97;
+    border-radius: 25px;
+    border: 5px solid #FFB30F;
+    text-align: center;
+    color: white;
+    font-family: Georgia, serif;
+    padding: 10px;
+}
