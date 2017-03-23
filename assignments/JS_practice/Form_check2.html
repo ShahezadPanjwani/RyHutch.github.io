@@ -49,20 +49,38 @@
     
     function validateForm() {
 
+        var complete = true;
+        var missing = [];
+
+        // Check for ID
         if( document.getElementById("input_id").value.length === 0 ) {
             document.getElementById("span_id").innerHTML = "Please enter an ID<br>";
+            complete = false;
+            missing.push("ID")
         } else {
             document.getElementById("span_id").innerHTML = "";
         }
+
+        // Check for first name
         if( document.getElementById("input_firstname").value.length === 0 ) {
             document.getElementById("span_firstname").innerHTML = "Please enter a First Name<br>";
+            complete = false;
+            missing.push("First Name")
         } else {
             document.getElementById("span_firstname").innerHTML = "";
         }
+
+        // Check for last name
         if( document.getElementById("input_lastname").value.length === 0 ) {
             document.getElementById("span_lastname").innerHTML = "Please enter a Last Name<br>";
+            complete = false;
+            missing.push("Last Name")
         } else {
             document.getElementById("span_lastname").innerHTML = "";
+        }
+
+        if(!complete){
+            alert("You are missing fields: " + missing.toString());
         }
 
         document.getElementById("id").innerHTML = document.getElementById("input_id").value;
