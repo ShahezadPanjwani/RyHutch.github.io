@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Practice</title>
+</head>
+<body>
+
+<p id="fibs"></p>
+<p id="stars"></p>
+<p id="arraySort"></p>
+<p id="mode"></p>
+<p id="shuffle"></p>
+
+<p id="testText">THIS IS SOME TEXT</p>
+<button onclick="colors(this, 'red')">Change The Colors</button>
+
+<script>
+    function fibNumbers(x) {
+        var fibNumbers = new Array(0, 1);
+
+        for (var i = 0; i < x; i++) {
+            var c = fibNumbers[i] + fibNumbers[i + 1];
+            fibNumbers.push(c);
+        }
+        var str = fibNumbers.toString();
+        document.getElementById("fibs").innerHTML = str;
+    }
+
+    function stars(x) {
+        var stars = new Array();
+        for (var i = 0; i < x; i++) {
+            var star = "";
+            for (var j = 0; j <= i; j++) {
+                star = star + "*";
+            }
+            stars.push(star);
+        }
+        document.getElementById("stars").innerHTML = stars.toString();
+    }
+
+    function arraySort(arr) {
+        arr.sort();
+        document.getElementById("arraySort").innerHTML = arr.toString();
+    }
+
+    function arrayCountMost(arr) {
+        arr.sort();
+        var map = {};
+        for (var i = 0; i < arr.length; i++){
+            if(map[arr[i]] == null){
+                map[arr[i]] = 1;
+            } else if (map[arr[i]] != null){
+                map[arr[i]] += 1;
+            }
+        }
+
+    }
+
+    function mode(array)
+    {
+        if(array.length == 0)
+            return null;
+        var modeMap = {};
+        var maxEl = array[0], maxCount = 1;
+        for(var i = 0; i < array.length; i++)
+        {
+            var el = array[i];
+            if(modeMap[el] == null)
+                modeMap[el] = 1;
+            else
+                modeMap[el]++;
+            if(modeMap[el] > maxCount)
+            {
+                maxEl = el;
+                maxCount = modeMap[el];
+            }
+        }
+        document.getElementById("mode").innerHTML = "maxElement = " + maxEl.toString()+ " Counts = " + maxCount.toString();
+        return maxEl;
+    }
+
+    function shuffle(arr) {
+        var newArray = new Array();
+        var l = arr.length;
+        for (var i = 0; i < l; i++){
+            var randIndex = Math.floor(Math.random()*arr.length);
+            newArray.push(arr[randIndex]);
+            arr.splice(randIndex, 1);
+        }
+        document.getElementById("shuffle").innerHTML = newArray.toString();
+    }
+    
+    function colors(element, color) {
+        element.style.color = color;
+    }
+
+    fibNumbers(7);
+
+    stars(7);
+
+    var arr1 = [3, 8, 7, 6, 5, -4, 3, 2, 1];
+    arraySort(arr1);
+
+    var arr2 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+    mode(arr2);
+
+    shuffle(arr1);
+
+</script>
+
+</body>
+</html>

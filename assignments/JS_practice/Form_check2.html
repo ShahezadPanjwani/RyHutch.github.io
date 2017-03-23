@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>XHTML Form Example</title>
+
+    <style type="text/css">
+        .mandatory {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+<!-- Form -->
+<form action="http://codd.cs.gsu.edu/~lhenry/formtest.php"
+      method="post"
+      id="signup_form"
+      onreset="return window.confirm('Are you sure you want to clear the form?');"
+      onsubmit="return checkCompleteness();">
+    <p id="p_id">
+        Please enter an ID<br>
+        <label id="label_id" for="input_id">ID:</label>
+        <input id="input_id" name="input_id" type="text"/>
+    </p>
+    <p id="p_FirstName">
+        Please enter a First Name<br>
+        <label id="pass1_label" for="password1">First Name:</label>
+        <input id="password1" name="password1" type="password"/>
+    </p>
+    <p id="p_LastName">
+        Please enter a Last Name<br>
+        <label id="pass2_label" for="password2">Last Name:</label>
+        <input id="password2" name="password2" type="password"/>
+    </p>
+    <p>
+        <input id="clickMe" type="button" value="Add" onclick="validateForm();" />
+    </p>
+</form>
+</body>
+<script type="text/javascript">
+    
+    function validateForm() {
+        var id = document.getElementById("visitor_name").value;
+        document.getElementById("pass1_label").innerHTML = id;
+    }
+
+</script>
+</html>
