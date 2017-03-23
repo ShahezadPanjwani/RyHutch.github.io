@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -20,31 +19,55 @@
       id="signup_form"
       onreset="return window.confirm('Are you sure you want to clear the form?');"
       onsubmit="return checkCompleteness();">
-    <p id="p_id">
-        Please enter an ID<br>
+    <p>
+        <span id="span_id" class="mandatory"></span>
         <label id="label_id" for="input_id">ID:</label>
         <input id="input_id" name="input_id" type="text"/>
     </p>
-    <p id="p_FirstName">
-        Please enter a First Name<br>
-        <label id="pass1_label" for="password1">First Name:</label>
-        <input id="password1" name="password1" type="password"/>
+    <p>
+        <span id="span_firstname" class="mandatory"></span>
+        <label id="label_firstname" for="input_firstname">First Name:</label>
+        <input id="input_firstname" name="input_firstname" type="text"/>
     </p>
-    <p id="p_LastName">
-        Please enter a Last Name<br>
-        <label id="pass2_label" for="password2">Last Name:</label>
-        <input id="password2" name="password2" type="password"/>
+    <p>
+        <span id = "span_lastname" class="mandatory"></span>
+        <label id="label_lastname" for="input_lastname">Last Name:</label>
+        <input id="input_lastname" name="input_lastname" type="text"/>
     </p>
     <p>
         <input id="clickMe" type="button" value="Add" onclick="validateForm();" />
+    </p>
+
+    <p>
+        ID: <span id="id"></span><br>
+        First Name: <span id="firstname"></span><br>
+        Last Name: <span id="lastname"></span>
     </p>
 </form>
 </body>
 <script type="text/javascript">
     
     function validateForm() {
-        var id = document.getElementById("visitor_name").value;
-        document.getElementById("pass1_label").innerHTML = id;
+
+        if( document.getElementById("input_id").value.length === 0 ) {
+            document.getElementById("span_id").innerHTML = "Please enter an ID<br>";
+        } else {
+            document.getElementById("span_id").innerHTML = "";
+        }
+        if( document.getElementById("input_firstname").value.length === 0 ) {
+            document.getElementById("span_firstname").innerHTML = "Please enter a First Name<br>";
+        } else {
+            document.getElementById("span_firstname").innerHTML = "";
+        }
+        if( document.getElementById("input_lastname").value.length === 0 ) {
+            document.getElementById("span_lastname").innerHTML = "Please enter a Last Name<br>";
+        } else {
+            document.getElementById("span_lastname").innerHTML = "";
+        }
+
+        document.getElementById("id").innerHTML = document.getElementById("input_id").value;
+        document.getElementById("firstname").innerHTML = document.getElementById("input_firstname").value;
+        document.getElementById("lastname").innerHTML = document.getElementById("input_lastname").value;
     }
 
 </script>
