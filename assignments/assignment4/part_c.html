@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part C</title>
+
+    <style type="text/css">
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<p>How many pairs will you attempt?
+    <span>
+        <button onclick="setNumberOfTiles(8)">4</button>
+        <button onclick="setNumberOfTiles(10)">5</button>
+        <button onclick="setNumberOfTiles(12)">6</button>
+    </span>
+</p>
+<p id="p_pairs">
+    Current selection: 4
+</p>
+
+<p>How long would you like to memorize the images?
+    <span>
+        <button onclick="setSecondsToMemorize(3)">3</button>
+        <button onclick="setSecondsToMemorize(5)">5</button>
+        <button onclick="setSecondsToMemorize(8)">8</button>
+    </span>
+</p>
+
+<p id="p_time">
+    Current selection: 3
+</p>
+
+<p id="p_clock"></p>
+
+<table>
+    <tr>
+        <td id="0"></td>
+        <td id="1"></td>
+        <td id="2"></td>
+        <td id="3"></td>
+    </tr>
+    <tr>
+        <td id="4"></td>
+        <td id="5"></td>
+        <td id="6"></td>
+        <td id="7"></td>
+    </tr>
+    <tr>
+        <td id="8"></td>
+        <td id="9"></td>
+        <td id="10"></td>
+        <td id="11"></td>
+    </tr>
+</table>
+
+<button onclick="start(numberOfTiles, secondsToMemorize)">Start</button>
+
+<br>
+<br>
+<a href="./part_a.html">Part A</a>
+<a href="./part_b.html">Part B</a>
+
+</body>
+<script src="part_c.js" type="text/javascript"></script>
+</html>
